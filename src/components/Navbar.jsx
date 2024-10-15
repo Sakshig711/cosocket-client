@@ -160,25 +160,27 @@ const Navbar = () => {
         </div>
         {userInfo ? (
           <div className="hidden md:flex btn-container">
-            <Link
-              to={"/profile"}
-              className="profile-name flex justify-center items-center gap-3"
-            >
-              <div className="relative w-11 h-11 shadow-custom rounded-full">
-                <img
-                  src={userInfo.profilePicture}
-                  alt={userInfo.firstName}
-                  className="rounded-full w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <div className="text-gray-950 font-bold text-md">
-                  {`${userInfo.firstName} ${userInfo.lastName}`}
+            <div className="w-full flex justify-between items-center">
+              <Link
+                to={"/profile"}
+                className="profile-name flex justify-center items-center gap-3"
+              >
+                <div className="relative w-11 h-11 shadow-custom rounded-full">
+                  <img
+                    src={userInfo.profilePicture}
+                    alt={userInfo.firstName}
+                    className="rounded-full w-full h-full object-cover"
+                  />
                 </div>
-                <p className="text-[13px] text-gray-700 -my-0.5">
-                  {userInfo.email}
-                </p>
-              </div>
+                <div>
+                  <div className="text-gray-950 font-bold text-md">
+                    {`${userInfo.firstName} ${userInfo.lastName}`}
+                  </div>
+                  <p className="text-[13px] text-gray-700 -my-0.5">
+                    {userInfo.email}
+                  </p>
+                </div>
+              </Link>
               <div>
                 <img
                   className="w-9 h-9 ms-3 cursor-pointer"
@@ -187,7 +189,7 @@ const Navbar = () => {
                   alt="logout"
                 />
               </div>
-            </Link>
+            </div>
           </div>
         ) : (
           <div className="hidden md:flex btn-container">
@@ -242,7 +244,7 @@ const Navbar = () => {
           </div>
         </div>
         {userInfo ? (
-          <div className="flex gap-5 w-full">
+          <div className="w-full flex justify-between items-center">
             <Link
               to={"/profile"}
               className="profile-name flex justify-center items-center gap-3"
@@ -262,15 +264,15 @@ const Navbar = () => {
                   {userInfo.email}
                 </p>
               </div>
-              <div>
-                <img
-                  className="w-9 h-9 ms-3 cursor-pointer"
-                  onClick={handleLogout}
-                  src={logoutImage}
-                  alt="logout"
-                />
-              </div>
             </Link>
+            <div>
+              <img
+                className="w-9 h-9 ms-3 cursor-pointer"
+                onClick={handleLogout}
+                src={logoutImage}
+                alt="logout"
+              />
+            </div>
           </div>
         ) : (
           <div className="flex gap-5 w-full">
