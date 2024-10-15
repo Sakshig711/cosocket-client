@@ -110,7 +110,7 @@ const Navbar = () => {
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -173,9 +173,11 @@ const Navbar = () => {
               </div>
               <div>
                 <div className="text-gray-950 font-bold text-md">
-                {`${userInfo.firstName} ${userInfo.lastName}`}
+                  {`${userInfo.firstName} ${userInfo.lastName}`}
                 </div>
-                <p className="text-[13px] text-gray-700 -my-0.5">{userInfo.email}</p>
+                <p className="text-[13px] text-gray-700 -my-0.5">
+                  {userInfo.email}
+                </p>
               </div>
               <div>
                 <img
@@ -240,7 +242,7 @@ const Navbar = () => {
           </div>
         </div>
         {userInfo ? (
-          <div className="hidden md:flex btn-container">
+          <div className="flex gap-5 w-full">
             <Link
               to={"/profile"}
               className="profile-name flex justify-center items-center gap-3"
@@ -254,9 +256,11 @@ const Navbar = () => {
               </div>
               <div>
                 <div className="text-gray-950 font-bold text-md">
-                {`${userInfo.firstName} ${userInfo.lastName}`}
+                  {`${userInfo.firstName} ${userInfo.lastName}`}
                 </div>
-                <p className="text-[13px] text-gray-700 -my-0.5">{userInfo.email}</p>
+                <p className="text-[13px] text-gray-700 -my-0.5">
+                  {userInfo.email}
+                </p>
               </div>
               <div>
                 <img
