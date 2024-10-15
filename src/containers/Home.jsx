@@ -12,6 +12,7 @@ import tshirt from "../assets/tshirt.png";
 import toy from "../assets/toy.png";
 import Layout from "../components/Layout";
 
+
 const products = [
   {
     name: "Wooden Chair",
