@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Utility Classes */
+
+.heading {
+  @apply text-center my-10 relative;
+}
+
+.heading::before {
+  content: "";
+  @apply absolute top-1/2 left-0 translate-y-1/2 w-full h-[0.01rem] -z-10 bg-gray-200;
+}
+
+.heading span{
+  @apply text-2xl font-semibold py-1 px-4 text-gray-950 border border-gray-200 bg-white;
+}
+
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+/* Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  width: 5px;  /* Width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;  /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000;  /* Color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #000;  /* Color of the scrollbar thumb when hovered */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+* {
+  transition: all ease-in 0.1s;
+  outline: none;
+  font-family: "DM Sans", sans-serif;
+}

@@ -1,0 +1,25 @@
+/* Change thumb color */
+.range-thumb::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: #EA580C; /* Blue color */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .range-thumb::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background-color: #EA580C; /* Blue color */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .range-thumb::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    background-color: #EA580C; /* Blue color */
+    border-radius: 50%;
+    cursor: pointer;
+  }
