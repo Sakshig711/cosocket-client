@@ -7,7 +7,6 @@ import {
   useGetOperationsMutation,
 } from "../store/slices/gptApiSlice";
 import { BarLoader } from "react-spinners";
-import SubmitBtn from "../components/SubmitBtn";
 import toast from "react-hot-toast";
 
 const Operation = () => {
@@ -51,10 +50,6 @@ const Operation = () => {
     materials,
     tools
   ) => {
-    // if (manufacturersMap[operationId]) {
-    //   // Manufacturers already fetched for this operation, no need to fetch again
-    //   return;
-    // }
 
     setLoadingManufacturers((prev) => ({
       ...prev,
@@ -113,13 +108,13 @@ const Operation = () => {
               <h1 className="font-bold text-2xl border-b-2 pb-1 border-black">
                 {product.name}
               </h1>
-              <p>{product.description}</p>
+              <p className="md:text-base text-sm text-center py-2 px-5">{product.description}</p>
             </div>
           </div>
         )}
 
         <div className="bg-red-50 rounded-sm shadow p-5 md:p-10 mt-10">
-          <h1 className="text-center text-red-300 mb-12 font-medium text-[1.2rem]">
+          <h1 className="text-center text-red-300 mb-8 font-medium text-[1.2rem]">
             Custom Manufacturing Process Sheet
           </h1>
           {isLoading ? (

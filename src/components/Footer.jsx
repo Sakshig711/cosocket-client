@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="text-center mb-4">
         © 2024 COSOCKET | All rights reserved
       </div>
-      <div className="flex justify-center items-center gap-5">
+      <div className="flex text-sm font-normal justify-center flex-wrap items-center gap-5">
         <p>Privacy Policy</p>
         <p>Terms of Services</p>
         <p>Contact</p>

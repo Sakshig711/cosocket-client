@@ -32,7 +32,7 @@ const Children = () => {
           <BarLoader color="#000" speedMultiplier={2} />
         </div>
       ) : (
-        <div className="py-4 mt-8 px-10">
+        <div className="py-4 mt-8 md:px-10 px-5">
           {/* Root Category */}
           <div className="root-category w-full grid grid-cols-1 md:grid-cols-12 md:gap-6 gap-10">
             <div className="flex justify-center items-center gap-3 md:col-span-4 md:me-auto">
@@ -46,7 +46,7 @@ const Children = () => {
                 <p className="text-[11px]">{children.description}</p>
               </div>
             </div>
-            <div className="flex gap-10 justify-center items-center flex-wrap md:col-span-8 md:ms-auto">
+            <div className="flex p-2 gap-10 justify-center items-center flex-wrap md:col-span-8 md:ms-auto">
               <div className="price-range flex-grow flex justify-center items-center gap-3 flex-wrap">
                 <label htmlFor="range" className="text-md font-semibold">
                   Price Range:{" "}

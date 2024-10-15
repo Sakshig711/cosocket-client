@@ -56,7 +56,7 @@ const Product = () => {
       <div className="md:p-10 p-5 w-full mt-3 mb-10 flex md:flex-row flex-col justify-center md:gap-12 gap-10">
         {product && (
           <div className="product-details md:w-[40%]">
-            <h1 className="text-2xl font-bold text-gray-700 mb-10">
+            <h1 className="text-2xl font-bold text-gray-800 mb-10">
               {product.name}
             </h1>
             <div className="w-full">
@@ -66,24 +66,21 @@ const Product = () => {
                 className="w-[90%] md:mx-0"
               />
             </div>
-            <p className="text-base italic mt-6">{product.description}...</p>
-            <div className="flex justify-start items-center gap-4 mt-6">
-              <h2 className="font-semibold">Materials used </h2>
-              <div className="flex gap-3">
+            <p className="md:text-base text-sm text-gray-600 mt-6">{product.description}...</p>
+              <div className="flex flex-wrap gap-3 mt-3">
                 {product.materials &&
                   product.materials.map((material, index) => (
                     <div
                       key={index}
-                      className="border border-orange-600 font-semibold px-2 py-0.5 rounded text-orange-600"
+                      className="border border-orange-600 text-sm font-semibold px-2 py-0.5 rounded text-orange-600"
                     >
                       {material}
                     </div>
                   ))}
-              </div>
             </div>
             <div className="my-4 relative">
-              <h2 className="text-xl font-bold">Variations</h2>
-              <p className="text-sm ">Enter your required variations!</p>
+              <h2 className="text-lg text-gray-900 font-bold">Variations</h2>
+              <p className="text-sm text-gray-800">Enter your required variations!</p>
               <textarea
                 value={specs}
                 onChange={(e) => setSpecs(e.target.value)}
@@ -92,9 +89,9 @@ const Product = () => {
               />
               <button
                 onClick={fetchVariants}
-                className="flex justify-between items-center my-1 w-full bg-gray-500 font-semibold active:bg-gray-400 hover:bg-gray-600 cursor-pointer text-white py-[6px] px-3 shadow-md rounded"
+                className="flex text-base justify-between items-center my-1 w-full bg-[#2c3e50] font-semibold cursor-pointer text-white py-[6px] px-3 shadow-md rounded"
               >
-                <div>Generate different variants for {product.name}</div>
+                <div>Generate more variants!</div>
                 <IoMdRefreshCircle className="text-lg" />
               </button>
             </div>
