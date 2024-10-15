@@ -14,7 +14,7 @@ import { BarLoader, ScaleLoader } from "react-spinners";
 
 const Product = () => {
   const [specs, setSpecs] = useState("");
-  const [getProduct] = useGetProductMutation();
+  const [getProduct, { isLoading: isLoading2 }] = useGetProductMutation();
   const [getVariants, { isLoading }] = useGetVariantsMutation();
   const [product, setProduct] = useState(null);
   const [variants, setVariants] = useState(null);
@@ -53,20 +53,25 @@ const Product = () => {
 
   return (
     <Layout>
-      <div className="md:p-10 p-5 w-full mt-3 mb-10 flex md:flex-row flex-col justify-center md:gap-12 gap-10">
-        {product && (
-          <div className="product-details md:w-[40%]">
-            <h1 className="text-2xl font-bold text-gray-800 mb-10">
-              {product.name}
-            </h1>
-            <div className="w-full">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-[90%] md:mx-0"
-              />
-            </div>
-            <p className="md:text-base text-sm text-gray-600 mt-6">{product.description}...</p>
+      {isLoading2 ? (
+        <Loader />
+      ) : (
+        <div className="md:p-10 p-5 w-full mt-3 mb-10 flex md:flex-row flex-col justify-center md:gap-12 gap-10">
+          {product && (
+            <div className="product-details md:w-[40%]">
+              <h1 className="text-2xl font-bold text-gray-800 mb-10">
+                {product.name}
+              </h1>
+              <div className="w-full">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-[90%] md:mx-0"
+                />
+              </div>
+              <p className="md:text-base text-sm text-gray-600 mt-6">
+                {product.description}...
+              </p>
               <div className="flex flex-wrap gap-3 mt-3">
                 {product.materials &&
                   product.materials.map((material, index) => (
@@ -77,59 +82,63 @@ const Product = () => {
                       {material}
                     </div>
                   ))}
-            </div>
-            <div className="my-4 relative">
-              <h2 className="text-lg text-gray-900 font-bold">Variations</h2>
-              <p className="text-sm text-gray-800">Enter your required variations!</p>
-              <textarea
-                value={specs}
-                onChange={(e) => setSpecs(e.target.value)}
-                className="border border-gray-300 px-3 mt-3 py-2 w-full h-32 resize-none rounded"
-                placeholder="Enter size, color, material, etc."
-              />
-              <button
-                onClick={fetchVariants}
-                className="flex text-base justify-between items-center my-1 w-full bg-[#2c3e50] font-semibold cursor-pointer text-white py-[6px] px-3 shadow-md rounded"
-              >
-                <div>Generate more variants!</div>
-                <IoMdRefreshCircle className="text-lg" />
-              </button>
-            </div>
-            <div className="flex gap-4 w-full justify-start items-center mt-4 flex-wrap">
-              <Link to={`/operations/${product.slug}`}>
+              </div>
+              <div className="my-4 relative">
+                <h2 className="text-lg text-gray-900 font-bold">Variations</h2>
+                <p className="text-sm text-gray-800">
+                  Enter your required variations!
+                </p>
+                <textarea
+                  value={specs}
+                  onChange={(e) => setSpecs(e.target.value)}
+                  className="border border-gray-300 px-3 mt-3 py-2 w-full h-32 resize-none rounded"
+                  placeholder="Enter size, color, material, etc."
+                />
+                <button
+                  onClick={fetchVariants}
+                  className="flex text-base justify-between items-center my-1 w-full bg-[#2c3e50] font-semibold cursor-pointer text-white py-[6px] px-3 shadow-md rounded"
+                >
+                  <div>Generate more variants!</div>
+                  <IoMdRefreshCircle className="text-lg" />
+                </button>
+              </div>
+              <div className="flex gap-4 w-full justify-start items-center mt-4 flex-wrap">
+                <Link to={`/operations/${product.slug}`}>
+                  <Button className="flex-grow">
+                    Custom Manufacturing{" "}
+                    <IoMdBusiness className="inline ms-1" />{" "}
+                  </Button>
+                </Link>
                 <Button className="flex-grow">
-                  Custom Manufacturing <IoMdBusiness className="inline ms-1" />{" "}
+                  Sourcing <FaHouseUser className="inline ms-1" />
                 </Button>
-              </Link>
-              <Button className="flex-grow">
-                Sourcing <FaHouseUser className="inline ms-1" />
-              </Button>
-              <Link to={`/inspection/${product.name}`}>
-                <Button className="flex-grow">
-                  Inspection <LuInspect className="inline ms-1" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        )}
-
-        <div className="md:w-[60%] w-full mx-auto">
-          <h1 className="text-2xl font-bold text-gray-700 mb-10">Variants</h1>
-          {/* Loader */}
-          {isLoading ? (
-            <div className="w-full h-full flex justify-start items-start mb-8">
-              <BarLoader color="#000" speedMultiplier={2} />
-            </div>
-          ) : (
-            <div className="grid xl:grid-cols-2 gap-8">
-              {variants &&
-                variants.map((variant, index) => (
-                  <VariantCard key={index} variant={variant} />
-                ))}
+                <Link to={`/inspection/${product.name}`}>
+                  <Button className="flex-grow">
+                    Inspection <LuInspect className="inline ms-1" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           )}
+
+          <div className="md:w-[60%] w-full mx-auto">
+            <h1 className="text-2xl font-bold text-gray-700 mb-10">Variants</h1>
+            {/* Loader */}
+            {isLoading ? (
+              <div className="w-full h-full flex justify-start items-start mb-8">
+                <BarLoader color="#000" speedMultiplier={2} />
+              </div>
+            ) : (
+              <div className="grid xl:grid-cols-2 gap-8">
+                {variants &&
+                  variants.map((variant, index) => (
+                    <VariantCard key={index} variant={variant} />
+                  ))}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </Layout>
   );
 };

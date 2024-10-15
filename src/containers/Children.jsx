@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { useGetChildrenMutation } from "../store/slices/childrenApiSlice";
 import { BarLoader } from "react-spinners";
+import Loader from "../components/Loader";
 
 const Children = () => {
   const { slug } = useParams();
@@ -28,9 +29,7 @@ const Children = () => {
   return (
     <Layout>
       {isLoading ? (
-        <div className="w-full flex justify-center items-center mt-10 mb-8">
-          <BarLoader color="#000" speedMultiplier={2} />
-        </div>
+        <Loader />
       ) : (
         <div className="py-4 mt-8 md:px-10 px-5">
           {/* Root Category */}
