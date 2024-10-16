@@ -15,7 +15,7 @@ const VariantCard = ({ variant, className }) => {
               key={idx}
               className="flex justify-between items-center gap-4 mt-1"
             >
-              <div className="capitalize font-semibold">{key}</div>
+              <div className="capitalize text-black font-semibold">{key}</div>
               <div className="italic">
                 {Array.isArray(value)
                   ? value.slice(0, 2).map((element, index) => (
