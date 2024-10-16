@@ -33,7 +33,7 @@ const Inspection = () => {
         <Loader />
       ) : (
         <div className="p-5 w-full">
-          <h2 className="mt-2 mb-10 text-xl italic font-bold border-b-2 border-black w-fit pb-2 text-dark-gray">
+          <h2 className="mt-2 mb-10 text-xl italic font-bold w-fit pb-2 text-dark-gray">
             Quality Inspection Plan for {product}
           </h2>
 
@@ -54,8 +54,8 @@ const Inspection = () => {
                 steps: inspectionSteps.final_inspection,
               },
             ].map((inspection, i) => (
-              <div key={i} className="bg-gray-50 p-5 rounded shadow-custom">
-                <h3 className="text-base uppercase font-extrabold text-gray-200 mb-4">
+              <div key={i} className="bg-gray-100 p-5 rounded shadow-custom">
+                <h3 className="text-[0.8rem] uppercase font-extrabold text-gray-300 mb-4">
                   {inspection.title}
                 </h3>
 
