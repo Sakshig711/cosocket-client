@@ -59,7 +59,7 @@ const Product = () => {
         <div className="md:p-10 p-5 w-full mt-3 mb-10 flex md:flex-row flex-col justify-center md:gap-12 gap-10">
           {product && (
             <div className="product-details md:w-[40%]">
-              <h1 className="text-2xl font-bold text-gray-800 mb-10">
+              <h1 className="text-2xl font-bold text-black mb-10">
                 {product.name}
               </h1>
               <div className="w-full">
@@ -122,11 +122,11 @@ const Product = () => {
           )}
 
           <div className="md:w-[60%] w-full mx-auto">
-            <h1 className="text-2xl font-bold text-gray-700 mb-10">Variants</h1>
+            <h1 className="text-2xl font-bold text-black mb-10">Variants</h1>
             {/* Loader */}
             {isLoading ? (
               <div className="w-full h-full flex justify-start items-start mb-8">
-                <BarLoader color="#000" speedMultiplier={2} />
+                <BarLoader color="#1F2937" speedMultiplier={2} />
               </div>
             ) : (
               <div className="grid xl:grid-cols-2 gap-8">

@@ -137,7 +137,7 @@ const Navbar = () => {
         }
       />
       <div className="border-b border-gray-50 header bg-gray-50 relative p-4 flex justify-between items-center">
-        <Link to={"/"} className="md:w-58 w-48 h-full">
+        <Link to={"/"} className="md:w-50 w-44 h-full">
           <img
             className="w-full h-full object-cover"
             src={logo}
