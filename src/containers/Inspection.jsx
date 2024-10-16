@@ -54,8 +54,8 @@ const Inspection = () => {
                 steps: inspectionSteps.final_inspection,
               },
             ].map((inspection, i) => (
-              <div key={i} className="bg-gray-100 p-5 rounded shadow-custom">
-                <h3 className="text-base uppercase font-extrabold text-gray-300 mb-4">
+              <div key={i} className="bg-gray-50 p-5 rounded shadow-custom">
+                <h3 className="text-base uppercase font-extrabold text-gray-200 mb-4">
                   {inspection.title}
                 </h3>
 
