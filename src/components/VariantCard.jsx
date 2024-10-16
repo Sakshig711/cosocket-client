@@ -30,7 +30,7 @@ const VariantCard = ({ variant, className }) => {
           ))}
         </p>
         <Link>
-          <Button className="w-full mt-4 !bg-black">View Details</Button>
+          <Button className="w-full mt-4 !hover:bg-gray-800 !bg-gray-700">View Details</Button>
         </Link>
       </div>
     </div>

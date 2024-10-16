@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 import React, { useEffect, useState } from "react";
 import { FaBars, FaSearch, FaTimes, FaUserCircle } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo2.png";
 import CategoriesCarousal from "./CategoriesCarousal";
 import Register from "./Register";
 import Login from "./Login";
@@ -153,7 +153,7 @@ const Navbar = () => {
               id="search"
               placeholder="Enter your product here..."
             />
-            <div className="bg-gray-950 cursor-pointer shadow flex justify-center items-center p-2 rounded-full">
+            <div className="bg-gray-800 cursor-pointer shadow flex justify-center items-center p-2 rounded-full">
               <FaSearch className="text-lg text-white" />
             </div>
           </div>
@@ -183,7 +183,7 @@ const Navbar = () => {
               </Link>
               <div>
                 <img
-                  className="w-9 h-9 ms-3 cursor-pointer"
+                  className="w-9 h-9 ms-4 cursor-pointer"
                   onClick={handleLogout}
                   src={logoutImage}
                   alt="logout"
@@ -202,7 +202,7 @@ const Navbar = () => {
           </div>
         )}
         <div className="md:hidden flex gap-5 justify-center items-center ">
-          <div className="bg-black cursor-pointer shadow flex justify-center items-center p-[4px] rounded-full">
+          <div className="bg-gray-800 cursor-pointer shadow flex justify-center items-center p-[4px] rounded-full">
             <FaUserCircle
               className=" text-xl text-white"
               onClick={() => {
@@ -214,12 +214,12 @@ const Navbar = () => {
           <div className="">
             {!menu ? (
               <FaBars
-                className="text-2xl cursor-pointer text-gray-950"
+                className="text-2xl cursor-pointer text-gray-800"
                 onClick={toggleMenu}
               />
             ) : (
               <FaTimes
-                className="text-2xl cursor-pointer text-gray-950"
+                className="text-2xl cursor-pointer text-gray-800"
                 onClick={toggleMenu}
               />
             )}
@@ -267,7 +267,7 @@ const Navbar = () => {
             </Link>
             <div>
               <img
-                className="w-9 h-9 ms-3 cursor-pointer"
+                className="w-9 h-9 ms-4 cursor-pointer"
                 onClick={handleLogout}
                 src={logoutImage}
                 alt="logout"
@@ -289,7 +289,7 @@ const Navbar = () => {
         )}
       </div>
       <div
-        className={`md:static flex absolute left-0 z-50 transition-all duration-300 md:w-auto opacity-0 md:opacity-100 md:scale-100 w-full md:visible menu shadow-md border-b border-gray-50 md:flex md:flex-row flex-col gap-0 md:gap-10 justify-center ps-7 pe-4 py-4 md:py-[15px] text-white text-lg font-semibold bg-gray-950 ${
+        className={`md:static flex absolute left-0 z-50 transition-all duration-300 md:w-auto opacity-0 md:opacity-100 md:scale-100 w-full md:visible menu shadow-custom md:flex md:flex-row flex-col gap-0 md:gap-10 justify-center ps-7 pe-4 py-4 md:py-[15px] text-white text-lg font-semibold bg-gray-800 ${
           menu ? "visible opacity-100" : "invisible"
         }`}
       >

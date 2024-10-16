@@ -118,13 +118,13 @@ const Operation = () => {
             </div>
           )}
 
-          <div className="bg-red-50 rounded-sm shadow p-5 md:p-10 mt-10">
-            <h1 className="text-center text-red-300 border-2 border-red-200 w-fit mx-auto px-4 py-1 rounded tracking-wide uppercase mb-10 font-extrabold text-lg">
+          <div className="bg-[#fffaf5] rounded-sm p-5 md:p-10 mt-10">
+            <h1 className="text-center text-orange-400 border-2 border-orange-300 w-fit mx-auto px-4 py-1 rounded tracking-wide uppercase mb-10 font-extrabold text-lg">
               Process Sheet
             </h1>
             {isLoading ? (
               <div className="w-full h-full flex justify-center items-center mb-8">
-                <BarLoader color="#FCA5A5" speedMultiplier={2} />
+                <BarLoader color="#FB923C" speedMultiplier={2} />
               </div>
             ) : (
               <div className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-x-8 gap-x-0 gap-y-10 md:gap-y-14">
@@ -134,7 +134,7 @@ const Operation = () => {
                       key={operation.sequence}
                       className="flex flex-col w-full justify-start items-center gap-4"
                     >
-                      <div className="bg-red-600 shadow-custom text-white w-24 h-24 rounded-full flex justify-center items-center font-semibold">
+                      <div className="bg-orange-500 shadow-custom text-white w-24 h-24 rounded-full flex justify-center items-center font-semibold">
                         Step {operation.sequence}
                       </div>
                       <div className="bg-white w-full shadow-lg p-4 md:p-5 rounded-lg mt-2">
@@ -147,7 +147,7 @@ const Operation = () => {
                           {operation.materials.map((material, index) => (
                             <div
                               key={index}
-                              className="border w-fit text-sm py-[1px] font-medium px-2 rounded border-red-600 text-red-600"
+                              className="border w-fit text-sm py-[1px] font-medium px-2 rounded border-orange-500 text-orange-500"
                             >
                               {material}
                             </div>
@@ -158,7 +158,7 @@ const Operation = () => {
                           {operation.tools.map((tool, index) => (
                             <div
                               key={index}
-                              className="border w-fit py-[1px] text-sm font-medium px-2 rounded border-[#2c3e50] text-[#2c3e50]"
+                              className="border w-fit py-[1px] text-sm font-medium px-2 rounded border-gray-900 text-gray-900"
                             >
                               {tool}
                             </div>
@@ -179,7 +179,7 @@ const Operation = () => {
                               operation.tools
                             )
                           }
-                          className="py-1.5 shadow-lg font-semibold px-3 w-full bg-[#2c3e50] text-white text-center rounded-sm cursor-pointer hover:bg-[#212d3a] mt-3"
+                          className="py-1.5 shadow-lg font-semibold px-3 w-full bg-gray-700 text-white text-center rounded-sm cursor-pointer hover:bg-gray-800 mt-3"
                         >
                           {loadingManufacturers[operation.sequence] ? (
                             <div className="w-full flex justify-center items-center gap-3">
@@ -202,7 +202,7 @@ const Operation = () => {
                                   <div className="font-semibold text-sm md:text-base text-[#000]">
                                     {manufacturer.name}
                                   </div>
-                                  <button className="bg-red-600 md:text-base text-[13px] py-1 px-3 rounded text-white font-semibold hover:bg-red-700 shadow-custom-sm">
+                                  <button className="bg-orange-500 md:text-base text-[13px] py-1 px-3 rounded text-white font-semibold hover:bg-orange-600 shadow-custom-sm">
                                     View Details
                                   </button>
                                 </div>

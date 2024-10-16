@@ -96,7 +96,7 @@ const Product = () => {
                 />
                 <button
                   onClick={fetchVariants}
-                  className="flex text-base justify-between items-center my-1 w-full bg-[#2c3e50] font-semibold cursor-pointer text-white py-[6px] px-3 shadow-md rounded"
+                  className="flex text-base justify-between items-center my-1 w-full bg-gray-700 hover:bg-gray-800 font-semibold cursor-pointer text-white py-[6px] px-3 shadow-md rounded"
                 >
                   <div>Generate more variants!</div>
                   <IoMdRefreshCircle className="text-lg" />
