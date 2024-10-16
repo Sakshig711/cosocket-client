@@ -214,12 +214,12 @@ const Navbar = () => {
           <div className="">
             {!menu ? (
               <FaBars
-                className="text-2xl cursor-pointer text-gray-800"
+                className="text-[1.65rem] cursor-pointer text-gray-800"
                 onClick={toggleMenu}
               />
             ) : (
               <FaTimes
-                className="text-2xl cursor-pointer text-gray-800"
+                className="text-[1.65rem] cursor-pointer text-gray-800"
                 onClick={toggleMenu}
               />
             )}
@@ -227,7 +227,7 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={`flex scale-0 w-full z-50 opacity-0 bg-orange-50 shadow p-10 flex-col transition-all ease-in duration-100 items-center ${
+        className={`flex scale-0 w-full z-50 opacity-0 bg-[#fffaf5] shadow p-10 flex-col transition-all ease-in duration-100 items-center ${
           search ? "opacity-100 scale-100 static" : "absolute"
         }`}
       >

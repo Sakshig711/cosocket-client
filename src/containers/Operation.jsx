@@ -118,8 +118,8 @@ const Operation = () => {
             </div>
           )}
 
-          <div className="bg-[#fffaf5] rounded-sm p-5 md:p-10 mt-10">
-            <h1 className="text-center text-orange-400 border-2 border-orange-300 w-fit mx-auto px-4 py-1 rounded tracking-wide uppercase mb-10 font-extrabold text-lg">
+          <div className="bg-[#fffaf5] rounded-sm py-14 px-5 md:px-10 mt-10">
+            <h1 className="text-center text-orange-400 border-2 border-orange-400 w-fit mx-auto px-4 py-1 rounded tracking-wide uppercase mb-10 font-extrabold text-lg">
               Process Sheet
             </h1>
             {isLoading ? (
@@ -190,14 +190,14 @@ const Operation = () => {
                             <div>Relevant Manufacturers</div>
                           )}
                         </div>
-                        <div className="mt-5 rounded bg-[#fff] border">
+                        <div className="rounded-sm bg-[#fff]">
                           {manufacturersMap[operation.sequence] &&
                             manufacturersMap[operation.sequence]
                               .slice(0, 6)
                               .map((manufacturer, index) => (
                                 <div
                                   key={index}
-                                  className="flex py-4 border-b rounded px-3 md:px-4 justify-between items-center "
+                                  className="flex py-4 border-b border-l border-r px-3 md:px-4 justify-between items-center "
                                 >
                                   <div className="font-semibold text-sm md:text-base text-[#000]">
                                     {manufacturer.name}
