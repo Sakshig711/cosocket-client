@@ -214,12 +214,12 @@ const Navbar = () => {
           <div className="">
             {!menu ? (
               <FaBars
-                className="text-[1.65rem] cursor-pointer text-gray-800"
+                className="text-[1.75rem] cursor-pointer text-gray-800"
                 onClick={toggleMenu}
               />
             ) : (
               <FaTimes
-                className="text-[1.65rem] cursor-pointer text-gray-800"
+                className="text-[1.75rem] cursor-pointer text-gray-800"
                 onClick={toggleMenu}
               />
             )}
