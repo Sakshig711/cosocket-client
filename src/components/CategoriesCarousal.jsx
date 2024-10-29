@@ -40,13 +40,18 @@ const CategoriesCarousal = ({ categories }) => {
         >
           {categories.map((element, index) => (
             <SwiperSlide key={index} className="!w-auto">
-            {/* <Link to={`https://api.escuelajs.co/api/v1/categories/${element.id}/products`} replace */}
-            <Link to={`/categories/${element.slug}`}
+              {/* <Link to={`https://api.escuelajs.co/api/v1/categories/${element.id}/products`} replace */}
+              <Link
+                to={`/categories/${element.slug}`}
                 className={`text-gray-950 bg-white flex justify-center items-center gap-2 cursor-pointer relative py-2 md:py-1 px-3 active:bg-gray-200 transition-all duration-300 hover:bg-gray-50 border border-e-0 `}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
-                <img src={element.image} className="w-6 h-6 rounded-full" alt={element.name} />
+                <img
+                  src={element.image}
+                  className="w-6 h-6 rounded-full"
+                  alt={element.name}
+                />
                 <div>{element.name}</div>
               </Link>
             </SwiperSlide>
