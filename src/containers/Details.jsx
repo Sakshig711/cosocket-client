@@ -37,9 +37,9 @@ const Details = () => {
       {!manufacturer ? (
         <Loader />
       ) : (
-        <div className="md:p-10 p-3 flex flex-wrap gap-0 justify-center items-stretch my-5 bg-gray-100">
-          <div className="image-gallery bg-gray-800 md:scale-105 scale-1 w-full md:basis-[43%] flex justify-end items-center rounded-sm">
-            <div className="image w-full">
+        <div className="md:p-10 p-5 flex flex-wrap gap-0 justify-center items-stretch my-5 bg-white">
+          <div className="image-gallery bg-gray-800 md:scale-105 scale-1 w-full md:basis-[40%] flex justify-end items-center rounded-sm">
+            <div className="image md:w-full w-[90%]">
               <img src={detailsImage} className="w-full cover" alt="" />
             </div>
           </div>

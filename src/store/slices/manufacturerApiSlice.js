@@ -17,8 +17,15 @@ export const manufacturerApiSlice = apiSlice.injectEndpoints({
                 method: "GET",
                 credentials: "include",
             })
+        }),
+        getTopManufacturers: builder.mutation({
+            query: (id) => ({
+                url: `manufacturer/top-manufacturers`,
+                method: "GET",
+                credentials: "include",
+            })
         })
     })
 });
 
-export const { useGetManufacturersMutation, useGetManufacturerByIDMutation } = manufacturerApiSlice;
+export const { useGetManufacturersMutation, useGetManufacturerByIDMutation, useGetTopManufacturersMutation } = manufacturerApiSlice;

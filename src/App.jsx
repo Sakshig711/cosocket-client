@@ -9,6 +9,8 @@ import Product from "./containers/Product";
 import Operation from "./containers/Operation";
 import Details from "./containers/Details";
 import Sourcing from "./containers/Sourcing";
+import HowItWorks from "./containers/HowItWorks";
+import ManufacturerPage from "./containers/ManufacturerPage";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/products/:product" element={<Product />} />
         <Route path="/operations/:product" element={<Operation />} />
         <Route path="/manufacturer/:id" element={<Details />} />
+        <Route path="/demo" element={<HowItWorks />} />
+        <Route path="/top-manufacturers" element={<ManufacturerPage />} />
       </Routes>
     </Router>
   );

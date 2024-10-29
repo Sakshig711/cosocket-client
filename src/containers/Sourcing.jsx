@@ -27,11 +27,11 @@ const Sourcing = () => {
   }, [product]);
 
   return (
-    <Layout className={"bg-gray-100"}>
+    <Layout className={"bg-white"}>
       { (isLoading)  ? (
         <Loader />
       ) : (
-        <div className="bg-gray-100 min-h-screen md:px-10 py-10 px-5">
+        <div className="bg-white min-h-screen md:px-10 py-10 px-5">
           <div className=" w-fit mx-auto py-2 px-2 mb-8">
             {/* Page Header */}
             <h1 className="text-3xl font-bold text-center mb-2">
