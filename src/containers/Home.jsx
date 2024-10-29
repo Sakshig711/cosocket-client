@@ -79,7 +79,7 @@ export default function Home() {
               Subscription : $99 / Year
             </div>
             <Button className={"text-md"}>
-              <Link href={"#"} className="">
+              <Link href={"/demo"} className="">
                 Live Demo
               </Link>
             </Button>
