@@ -56,7 +56,7 @@ export default function Home() {
     <Layout className="bg-red">
       <div className="Home">
         {/* Hero Section */}
-        <div className="hero-section mt-20 mb-5 py-5 px-8 grid md:grid-cols-2 gap-10">
+        <div className="hero-section mt-20 mb-5 py-5 px-5 md:px-8 grid md:grid-cols-2 gap-10">
           <div className="img-container w-full h-full">
             <img
               src={hero}
@@ -87,7 +87,7 @@ export default function Home() {
         </div>
 
         {/* Products Section */}
-        <div className="products-section mt-20 mb-5 md:px-5 px-2">
+        <div className="products-section mt-20 mb-5 px-5">
           <h1 className="heading" id="products">
             <span> Our Products </span>
           </h1>
@@ -107,7 +107,7 @@ export default function Home() {
         </div>
 
         {/* Services Section */}
-        <div className="services-section mt-20 mb-5 md:px-5 px-2">
+        <div className="services-section mt-20 mb-5 px-5">
           <h1 className="heading" id="services">
             {" "}
             <span>Services</span>{" "}

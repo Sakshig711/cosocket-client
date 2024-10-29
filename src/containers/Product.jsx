@@ -56,7 +56,7 @@ const Product = () => {
       {isLoading2 ? (
         <Loader />
       ) : (
-        <div className="md:p-10 p-5 w-full mt-3 mb-10 flex md:flex-row flex-col justify-center md:gap-12 gap-10">
+        <div className="md:p-10 p-4 w-full mt-3 mb-10 flex md:flex-row flex-col justify-center md:gap-12 gap-10">
           {product && (
             <div className="product-details md:w-[40%]">
               <h1 className="text-2xl font-bold text-black mb-10">
@@ -103,20 +103,20 @@ const Product = () => {
                 </button>
               </div>
 
-              <div className="flex gap-4 justify-between items-center mt-4 w-full">
-                <Link to={`/operations/${product.slug}`} className="w-full">
+              <div className="flex gap-4 justify-between items-center flex-wrap mt-4 w-full">
+                <Link to={`/operations/${product.slug}`} className="w-full flex-grow flex-shrink basis-[80px]">
                   <Button className="w-full flex justify-start items-center">
                     <IoMdBusiness className="inline me-2.5" /> Customization{" "}
                   </Button>
                 </Link>
 
-                <Link to={`/sourcing/${product.name}`} className="w-full">
+                <Link to={`/sourcing/${product.name}`} className="w-full flex-grow flex-shrink basis-[80px]">
                   <Button className="w-full flex justify-start items-center">
                     <FaHouseUser className="inline me-2.5" /> Sourcing
                   </Button>
                 </Link>
 
-                <Link to={`/inspection/${product.name}`} className="w-full">
+                <Link to={`/inspection/${product.name}`} className="w-full flex-grow flex-shrink basis-[80px]">
                   <Button className="w-full flex justify-start items-center">
                     <LuInspect className="inline me-2.5" /> Inspection
                   </Button>

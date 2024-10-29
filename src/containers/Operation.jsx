@@ -126,7 +126,7 @@ const Operation = () => {
                 <h1 className="font-bold text-2xl border-b-2 pb-1 border-black">
                   {product.name}
                 </h1>
-                <p className="md:text-base text-sm text-center py-2 px-16">
+                <p className="md:text-base text-sm text-center py-2 px-4 md:px-16">
                   {product.description}
                 </p>
               </div>

@@ -117,13 +117,6 @@ const Sourcing = () => {
               {sourcing.notes}
             </p>
           </div>
-
-          {/* Back Button */}
-          <div className="text-center mt-8">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white py-2 px-6 rounded shadow-md">
-              Back to Products
-            </button>
-          </div>
         </div>
       )}
     </Layout>
