@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { useParams } from "react-router-dom";
 import { useGetInspectionStepsMutation } from "../store/slices/gptApiSlice";
 import Loader from "../components/Loader";
+import toast from "react-hot-toast";
 
 const Inspection = () => {
   const { product } = useParams();
@@ -18,6 +19,7 @@ const Inspection = () => {
       setIsInspectionSteps(true);
     } catch (error) {
       console.log(error);
+      toast.error(error?.data?.message || "Failed to fetch inspection steps");
     }
   };
 

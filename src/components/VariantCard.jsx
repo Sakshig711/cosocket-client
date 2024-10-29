@@ -8,8 +8,8 @@ const VariantCard = ({ variant, className }) => {
       className = {`rounded-sm overflow-hidden bg-white ${className} shadow-custom`}
     >
       {/* Title */}
-      <div className="px-6 py-4">
-        <p className="text-gray-600 mt-2">
+      <div className="w-full h-full px-6 flex flex-col justify-between py-4">
+        <p className="text-gray-600 mt-2 flex-1">
           {Object.entries(variant).map(([key, value], idx) => (
             <div
               key={idx}
@@ -29,8 +29,8 @@ const VariantCard = ({ variant, className }) => {
             </div>
           ))}
         </p>
-        <Link>
-          <Button className="w-full mt-4 !hover:bg-gray-800 !bg-gray-700">View Details</Button>
+        <Link to={`/operations/${variant.name}`}>
+          <Button className="w-full mt-4 !hover:bg-gray-800 !bg-gray-700">Customization</Button>
         </Link>
       </div>
     </div>

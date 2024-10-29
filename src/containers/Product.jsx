@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import { useGetProductMutation } from "../store/slices/productSlice";
+import { useGetProductMutation } from "../store/slices/productApiSlice";
 import { Link, useParams } from "react-router-dom";
 import Button from "../components/Button";
 import { IoMdBusiness, IoMdRefreshCircle } from "react-icons/io";
@@ -62,11 +62,11 @@ const Product = () => {
               <h1 className="text-2xl font-bold text-black mb-10">
                 {product.name}
               </h1>
-              <div className="w-full">
+              <div className="w-full ">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-[90%] md:mx-0"
+                  className="w-[100%] md:mx-0"
                 />
               </div>
               <p className="md:text-base text-sm text-gray-600 mt-6">
@@ -102,19 +102,23 @@ const Product = () => {
                   <IoMdRefreshCircle className="text-lg" />
                 </button>
               </div>
-              <div className="flex gap-4 w-full justify-start items-center mt-4 flex-wrap">
-                <Link to={`/operations/${product.slug}`}>
-                  <Button className="flex-grow">
-                    Custom Manufacturing{" "}
-                    <IoMdBusiness className="inline ms-1" />{" "}
+
+              <div className="flex gap-4 justify-between items-center mt-4 w-full">
+                <Link to={`/operations/${product.slug}`} className="w-full">
+                  <Button className="w-full flex justify-start items-center">
+                    <IoMdBusiness className="inline me-2.5" /> Customization{" "}
                   </Button>
                 </Link>
-                <Button className="flex-grow">
-                  Sourcing <FaHouseUser className="inline ms-1" />
-                </Button>
-                <Link to={`/inspection/${product.name}`}>
-                  <Button className="flex-grow">
-                    Inspection <LuInspect className="inline ms-1" />
+
+                <Link to={`/sourcing/${product.name}`} className="w-full">
+                  <Button className="w-full flex justify-start items-center">
+                    <FaHouseUser className="inline me-2.5" /> Sourcing
+                  </Button>
+                </Link>
+
+                <Link to={`/inspection/${product.name}`} className="w-full">
+                  <Button className="w-full flex justify-start items-center">
+                    <LuInspect className="inline me-2.5" /> Inspection
                   </Button>
                 </Link>
               </div>

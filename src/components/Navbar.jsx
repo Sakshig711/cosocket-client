@@ -28,11 +28,6 @@ const Navbar = () => {
 
   // Menus for menu
   const menuItems = [
-    "Home",
-    "Source",
-    "Customization",
-    "Manufacturer Login",
-    "Contact Us",
   ];
 
   const toggleMenu = (e) => {
@@ -141,7 +136,7 @@ const Navbar = () => {
                 : "invisible opacity-0 scale-0"
             }
           />
-          <div className="border-b border-gray-50 header bg-gray-50 relative p-4 flex justify-between items-center">
+          <div className="border-b border-gray-50 header bg-gray-100 relative py-5 px-4 flex justify-between items-center">
             <Link to={"/"} className="md:w-50 w-44 h-full">
               <img
                 className="w-full h-full object-cover"
@@ -296,7 +291,12 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <div
+          {/* <div
+            className={`md:static flex absolute left-0 z-50 transition-all duration-300 md:w-auto opacity-0 md:opacity-100 md:scale-100 w-full md:visible menu shadow-custom md:flex md:flex-row flex-col gap-0 md:gap-10 justify-center ps-7 pe-4 py-4 md:py-[15px] text-white text-lg font-semibold bg-gray-800 ${
+              menu ? "visible opacity-100" : "invisible"
+            }`}
+          > */}
+           <div
             className={`md:static flex absolute left-0 z-50 transition-all duration-300 md:w-auto opacity-0 md:opacity-100 md:scale-100 w-full md:visible menu shadow-custom md:flex md:flex-row flex-col gap-0 md:gap-10 justify-center ps-7 pe-4 py-4 md:py-[15px] text-white text-lg font-semibold bg-gray-800 ${
               menu ? "visible opacity-100" : "invisible"
             }`}

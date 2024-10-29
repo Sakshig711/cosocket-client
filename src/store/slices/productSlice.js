@@ -1,15 +1,10 @@
-import { apiSlice } from "./apiSlice";
-const URL = "/products";
+import { createSlice } from "@reduxjs/toolkit";
 
-export const productApiSlice = apiSlice.injectEndpoints({
-    endpoints: (builder) => ({
-        getProduct: builder.mutation({
-            query: (product) => ({
-                url: `${URL}/${product}`,
-                method: "GET",
-            })
-        })
-    })
-});
+const initialState = {
+    
+}
 
-export const { useGetProductMutation } = productApiSlice;
+const productSlice = createSlice({
+    name: "product",
+    
+})

@@ -6,39 +6,10 @@ import price from "../assets/price.png";
 import shipping from "../assets/shipping.png";
 import manu from "../assets/manu.png";
 import quoto from "../assets/quoto.png";
-import chair from "../assets/chair.png";
-import table from "../assets/table.png";
-import tshirt from "../assets/tshirt.png";
-import toy from "../assets/toy.png";
 import Layout from "../components/Layout";
-
-
-const products = [
-  {
-    name: "Wooden Chair",
-    priceRange: "$50 - $150",
-    materials: ["Wood", "Screws", "Paint"],
-    img: chair,
-  },
-  {
-    name: "Steel Table",
-    priceRange: "$100 - $300",
-    materials: ["Steel", "Welding Rods", "Paint"],
-    img: table,
-  },
-  {
-    name: "Cotton T-Shirt",
-    priceRange: "$10 - $30",
-    materials: ["Cotton Fabric", "Thread", "Labels"],
-    img: tshirt,
-  },
-  {
-    name: "Plastic Toy",
-    priceRange: "$5 - $20",
-    materials: ["Plastic", "Paint", "Assembly Screws"],
-    img: toy,
-  },
-];
+import { useGetRandomProductsMutation } from "../store/slices/productApiSlice";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const services = [
   {
@@ -64,8 +35,25 @@ const services = [
 ];
 
 export default function Home() {
+  const [getRandomProducts, { isLoading }] = useGetRandomProductsMutation();
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    try {
+      const { data } = await getRandomProducts(8).unwrap();
+      console.log(data);
+      setProducts(data);
+    } catch (error) {
+      toast.error(error?.data?.meassage);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+  
   return (
-    <Layout>
+    <Layout className="bg-red">
       <div className="Home">
         {/* Hero Section */}
         <div className="hero-section mt-20 mb-5 py-5 px-8 grid md:grid-cols-2 gap-10">
@@ -108,10 +96,11 @@ export default function Home() {
               products.map((element, index) => (
                 <ProductCard
                   key={index}
-                  imgUrl={element.img}
+                  imgUrl={element.image}
                   name={element.name}
-                  price={element.priceRange}
+                  price={element.price}
                   materials={element.materials}
+                  slug={element.slug}
                 />
               ))}
           </div>

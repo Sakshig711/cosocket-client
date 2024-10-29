@@ -33,7 +33,14 @@ export const gptApiSlice = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+        getSourcing: builder.mutation({
+            query: (product) => ({
+                url: `${GPT_URL}/sourcing/${product}`,
+                method: "GET",
+                credentials: "include"
+            })
+        })
     })
 });
 
-export const { useGetInspectionStepsMutation, useGetVariantsMutation, useGetOperationsMutation, useGetManufacturersMutation } = gptApiSlice;
+export const { useGetInspectionStepsMutation, useGetVariantsMutation, useGetOperationsMutation, useGetManufacturersMutation, useGetSourcingMutation } = gptApiSlice;

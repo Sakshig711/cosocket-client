@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import { useParams } from "react-router-dom";
-import { useGetProductMutation } from "../store/slices/productSlice";
+import { Link, useParams } from "react-router-dom";
+import { useGetProductMutation } from "../store/slices/productApiSlice";
 import {
   useGetManufacturersMutation,
   useGetOperationsMutation,
@@ -9,6 +9,11 @@ import {
 import { BarLoader } from "react-spinners";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader";
+import custom from "../assets/custom.png";
+import { FaPlusCircle } from "react-icons/fa";
+import { IoLocation } from "react-icons/io5";
+import { TbListDetails } from "react-icons/tb";
+import ManufacturerTable from "../components/ManufacturerTable";
 
 const Operation = () => {
   const { product: productSlug } = useParams();
@@ -19,24 +24,32 @@ const Operation = () => {
 
   const [operations, setOperations] = useState(null);
   const [operationsFetched, setOperationsFetched] = useState(false);
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState({});
   const [manufacturersMap, setManufacturersMap] = useState({}); // State to store manufacturers for each operation
   const [loadingManufacturers, setLoadingManufacturers] = useState({}); // Track loading status for each operation
+  const [selectedManufacturers, setSelectedManufacturers] = useState([]); // To keep selected manufacturers into one array
 
   const fetchProduct = async () => {
     try {
       const { data } = await getProduct(productSlug).unwrap();
-      setProduct(data);
+      if (data) {
+        setProduct(data);
+        fetchOperations(data?.name);
+      } else {
+        fetchOperations(productSlug);
+      }
     } catch (error) {
       console.log(error);
+      fetchOperations(productSlug);
     }
   };
 
-  const fetchOperations = async () => {
+  const fetchOperations = async (identifier) => {
     try {
-      const { data } = await getOperations(product.name).unwrap();
-      console.log(data);
+      console.log(identifier);
+      const { data } = await getOperations(identifier).unwrap();
       setOperations(data);
+      console.log(data);
       setOperationsFetched(true);
     } catch (error) {
       console.log(error);
@@ -82,15 +95,17 @@ const Operation = () => {
     }
   };
 
+  const handleSelectManufacturer = (operationId, manufacturer) => {
+    setSelectedManufacturers((prev) => [
+      ...prev.filter((item) => item.operationId !== operationId), // Replace if already exists
+      { operationId, manufacturer },
+    ]);
+    toast.success(`${manufacturer.name} selected for step ${operationId}`);
+  };
+
   useEffect(() => {
     fetchProduct(); // Fetch product when productSlug changes
   }, [productSlug]);
-
-  useEffect(() => {
-    if (product && !operationsFetched) {
-      fetchOperations(); // Fetch operations when the product has been fetched and set
-    }
-  }, [product, operationsFetched]);
 
   return (
     <Layout>
@@ -98,7 +113,7 @@ const Operation = () => {
         <Loader />
       ) : (
         <div className="py-6 mt-8">
-          {product && (
+          {Object.keys(product).length > 0 ? (
             <div>
               <div className="image w-full p-10">
                 <img
@@ -111,8 +126,22 @@ const Operation = () => {
                 <h1 className="font-bold text-2xl border-b-2 pb-1 border-black">
                   {product.name}
                 </h1>
-                <p className="md:text-base text-sm text-center py-2 px-5">
+                <p className="md:text-base text-sm text-center py-2 px-16">
                   {product.description}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className="image w-full p-10">
+                <img className="m-auto lg:w-[32%] md:w-[50%]" src={custom} />
+              </div>
+              <div className="info flex flex-col justify-center gap-3 items-center">
+                <h1 className="font-bold text-2xl border-b-2 pb-1 border-black">
+                  {productSlug}
+                </h1>
+                <p className="md:text-base text-sm text-center py-2 px-5">
+                  Customization plan for {productSlug} variant listed below!
                 </p>
               </div>
             </div>
@@ -197,20 +226,58 @@ const Operation = () => {
                               .map((manufacturer, index) => (
                                 <div
                                   key={index}
-                                  className="flex py-4 border-b border-l border-r px-3 md:px-4 justify-between items-center "
+                                  className=" flex flex-col gap-3 border-b border-l border-r px-3 md:px-4 py-4"
                                 >
-                                  <div className="font-semibold text-sm md:text-base text-[#000]">
-                                    {manufacturer.name}
+                                  <div className="flex justify-between items-center flex-wrap">
+                                    <div className="font-semibold text-sm md:text-base text-[#000]">
+                                      {manufacturer.name}
+                                    </div>
+                                    <div className="font-extrabold text-sm md:text-base text-gray-700">
+                                      <IoLocation className="inline text-[13px] mb-1" />{" "}
+                                      {manufacturer.location.split(",")[0]}
+                                    </div>
                                   </div>
-                                  <button className="bg-orange-500 md:text-base text-[13px] py-1 px-3 rounded text-white font-semibold hover:bg-orange-600 shadow-custom-sm">
-                                    View Details
-                                  </button>
+                                  <div
+                                    key={index}
+                                    className="flex justify-stretch gap-5 items-center"
+                                  >
+                                    <Link
+                                      to={`/manufacturer/${manufacturer._id}`}
+                                      className="flex justify-between items-center w-full bg-black md:text-base text-[13px] py-1 px-3 rounded text-white font-semibold hover:bg-black shadow-custom-sm"
+                                    >
+                                      <div>View</div>
+                                      <TbListDetails />
+                                    </Link>
+
+                                    <Link
+                                      to={`#`}
+                                      onClick={() =>
+                                        handleSelectManufacturer(
+                                          operation.sequence,
+                                          manufacturer
+                                        )
+                                      }
+                                      className="flex  justify-between items-center w-full bg-orange-500 md:text-base text-[13px] py-1 px-3 rounded text-white font-semibold hover:bg-orange-600 shadow-custom-sm"
+                                    >
+                                      <div>Select</div>
+                                      <FaPlusCircle />
+                                    </Link>
+                                  </div>
                                 </div>
                               ))}
                         </div>
                       </div>
                     </div>
                   ))}
+              </div>
+            )}
+            {selectedManufacturers && (
+              <div className="mt-20">
+                <h1 className="py-1 w-fit md:text-start text-center mb-5 font-semibold text-xl">
+                  Selected Manufacturers for Customized{" "}
+                  {product?.name || productSlug}
+                </h1>
+                <ManufacturerTable manufacturers={selectedManufacturers} />
               </div>
             )}
           </div>
