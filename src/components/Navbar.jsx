@@ -32,7 +32,7 @@ const Navbar = () => {
     { name: "Products", url: "#products" },
     { name: "Services", url: "#services" },
     { name: "How It Works", url: "/demo" },
-    { name: "Top Manufacturers", url: "/demo" },
+    { name: "Top Manufacturers", url: "/top-manufacturers" },
   ];
 
   const toggleMenu = (e) => {

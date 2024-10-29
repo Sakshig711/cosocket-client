@@ -89,7 +89,7 @@ const ManufacturerRow = ({ manufacturer, isEven }) => {
               : "bg-gray-500 hover:bg-gray-600 focus:ring-gray-300"
           }  text-white rounded-lg shadow-md focus:outline-none focus:ring-2 `}
         >
-          {showDetails ? "Hide Details" : "View Details"}
+          {showDetails ? "Hide Details" : "Contact Details"}
         </button>
       </div>
 
