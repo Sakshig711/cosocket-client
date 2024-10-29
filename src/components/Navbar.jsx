@@ -26,8 +26,11 @@ const Navbar = () => {
   const [logoutUser, { isLoading }] = useLogoutMutation();
   const [getCategories, { isLoading: isLoading2 }] = useGetCategoriesMutation();
 
-  // Menus for menu
+  // Menu Items with corresponding URLs
   const menuItems = [
+    { name: "Home", url: "/" },
+    { name: "Products", url: "#products" },
+    { name: "Services", url: "#services" },
   ];
 
   const toggleMenu = (e) => {
@@ -296,20 +299,31 @@ const Navbar = () => {
               menu ? "visible opacity-100" : "invisible"
             }`}
           > */}
-           <div
-            className={`md:static flex absolute left-0 z-50 transition-all duration-300 md:w-auto opacity-0 md:opacity-100 md:scale-100 w-full md:visible menu shadow-custom md:flex md:flex-row flex-col gap-0 md:gap-10 justify-center ps-7 pe-4 py-4 md:py-[15px] text-white text-lg font-semibold bg-gray-800 ${
+          <div
+            className={`md:static flex absolute left-0 z-50 transition-all duration-300 md:w-auto opacity-0 md:opacity-100 md:scale-100 w-full md:visible menu shadow-custom md:flex md:flex-row flex-col gap-0 md:gap-10 justify-center ps-7 pe-4 py-2.5 text-white text-lg font-semibold bg-gray-800 ${
               menu ? "visible opacity-100" : "invisible"
             }`}
           >
             {menuItems &&
-              menuItems.map((element, index) => (
-                <div
-                  key={index}
-                  className="menu-item relative cursor-pointer text-white p-3 rounded hover:transition-all hover:bg-gray-500 black md:p-0 md:hover:bg-inherit md:before:content-[''] md:before:absolute md:before:bottom-[-2px] md:before:w-0 md:before:left-1/2 md:before:transform md:before:-translate-x-1/2 md:before:hover:w-[90%] md:before:transition-all md:before:duration-200 md:before:bg-white before:h-[2px] md:before:rounded-full"
-                >
-                  {element}
-                </div>
-              ))}
+              menuItems.map((element, index) =>
+                element.url.startsWith("#") ? (
+                  <a
+                    href={element.url}
+                    key={index}
+                    className="menu-item relative cursor-pointer text-white p-3 rounded hover:transition-all hover:bg-gray-500 black md:p-0 md:hover:bg-inherit md:before:content-[''] md:before:absolute md:before:bottom-[-2px] md:before:w-0 md:before:left-1/2 md:before:transform md:before:-translate-x-1/2 md:before:hover:w-[90%] md:before:transition-all md:before:duration-200 md:before:bg-white before:h-[2px] md:before:rounded-full"
+                  >
+                    {element.name}
+                  </a>
+                ) : (
+                  <Link
+                    to={element.url}
+                    key={index}
+                    className="menu-item relative cursor-pointer text-white p-3 rounded hover:transition-all hover:bg-gray-500 black md:p-0 md:hover:bg-inherit md:before:content-[''] md:before:absolute md:before:bottom-[-2px] md:before:w-0 md:before:left-1/2 md:before:transform md:before:-translate-x-1/2 md:before:hover:w-[90%] md:before:transition-all md:before:duration-200 md:before:bg-white before:h-[2px] md:before:rounded-full"
+                  >
+                    {element.name}
+                  </Link>
+                )
+              )}
           </div>
           <CategoriesCarousal categories={categories} />
         </div>

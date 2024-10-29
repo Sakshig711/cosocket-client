@@ -88,7 +88,7 @@ export default function Home() {
 
         {/* Products Section */}
         <div className="products-section mt-20 mb-5 md:px-5 px-2">
-          <h1 className="heading">
+          <h1 className="heading" id="products">
             <span> Our Products </span>
           </h1>
           <div className="grid gap-8 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 place-items-center">
@@ -108,7 +108,7 @@ export default function Home() {
 
         {/* Services Section */}
         <div className="services-section mt-20 mb-5 md:px-5 px-2">
-          <h1 className="heading">
+          <h1 className="heading" id="services">
             {" "}
             <span>Services</span>{" "}
           </h1>
