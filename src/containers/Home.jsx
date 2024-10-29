@@ -51,7 +51,7 @@ export default function Home() {
   useEffect(() => {
     fetchProducts();
   }, []);
-  
+
   return (
     <Layout>
       <div className="Home">
@@ -78,11 +78,10 @@ export default function Home() {
             <div className="price uppercase text-sm font-bold w-fit py-1 border-b-2 border-gray-950">
               Subscription : $99 / Year
             </div>
-            <Button className={"text-md"}>
-              <Link href={"/demo"} className="">
-                Live Demo
-              </Link>
-            </Button>
+
+            <Link to={"/demo"} className="">
+              <Button className={"text-md"}>Live Demo</Button>
+            </Link>
           </div>
         </div>
 
