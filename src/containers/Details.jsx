@@ -33,7 +33,7 @@ const Details = () => {
   }, [id]);
 
   return (
-    <Layout className={"bg-gray-100"}>
+    <Layout >
       {!manufacturer ? (
         <Loader />
       ) : (

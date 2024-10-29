@@ -27,7 +27,7 @@ const Sourcing = () => {
   }, [product]);
 
   return (
-    <Layout className={"bg-white"}>
+    <Layout>
       { (isLoading)  ? (
         <Loader />
       ) : (

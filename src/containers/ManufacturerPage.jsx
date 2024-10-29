@@ -29,8 +29,8 @@ const ManufacturerPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="min-h-screen bg-gray-50 py-10 px-5">
-          <h1 className="md:text-3xl w-fit mx-auto text-2xl pb-2 border-b-2 border-black font-bold text-center text-black mb-10">
+        <div className="min-h-screen bg-white py-10 px-5">
+          <h1 className="md:text-3xl w-fit mx-auto text-xl pb-2 border-b-2 border-black font-bold text-center text-black mb-10">
             Explore our Top Manufacturers!
           </h1>
 
@@ -87,9 +87,9 @@ const ManufacturerRow = ({ manufacturer, isEven }) => {
             isEven
               ? "bg-orange-500 hover:bg-orange-600 focus:ring-orange-300"
               : "bg-gray-500 hover:bg-gray-600 focus:ring-gray-300"
-          }  text-white rounded-lg shadow-md focus:outline-none focus:ring-2 `}
+          }  text-white rounded-md shadow-md focus:outline-none focus:ring-2 `}
         >
-          {showDetails ? "Hide Details" : "Contact Details"}
+          {showDetails ? "Hide" : "Contact"}
         </button>
       </div>
 

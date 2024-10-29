@@ -141,7 +141,7 @@ const Navbar = () => {
                 : "invisible opacity-0 scale-0"
             }
           />
-          <div className="border-b border-gray-50 header bg-gray-100 relative py-5 px-4 flex justify-between items-center">
+          <div className="border-b border-gray-50 header bg-gray-50 relative py-5 px-4 flex justify-between items-center">
             <Link to={"/"} className="md:w-50 w-44 h-full">
               <img
                 className="w-full h-full object-cover"

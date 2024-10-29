@@ -53,7 +53,7 @@ export default function Home() {
   }, []);
   
   return (
-    <Layout className="bg-red">
+    <Layout>
       <div className="Home">
         {/* Hero Section */}
         <div className="hero-section mt-20 mb-5 py-5 px-5 md:px-8 grid md:grid-cols-2 gap-10">

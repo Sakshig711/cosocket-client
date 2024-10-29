@@ -44,7 +44,7 @@ const HowItWorks = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen mb-16">
+    <div className="bg-gray-100 min-h-screen pb-16">
       {/* Header Section */}
       <header className="bg-gradient-to-r from-orange-600 via-purple-800 to-indigo-700 text-white p-6">        <h1 className="text-center text-4xl font-bold mb-2">How It Works</h1>
         <p className="text-center text-lg">
