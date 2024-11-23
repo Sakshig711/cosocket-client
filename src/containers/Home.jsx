@@ -94,13 +94,12 @@ export default function Home() {
             {products &&
               products.map((element, index) => (
                 <ProductCard
-                  key={index}
-                  imgUrl={element.image}
-                  name={element.name}
-                  price={element.price}
-                  materials={element.materials}
-                  slug={element.slug}
-                />
+                        key={index}
+                        imgUrl={element.image}
+                        name={element.name}
+                        slug={element.slug}
+                        description={element.description}
+                      />
               ))}
           </div>
         </div>

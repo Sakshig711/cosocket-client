@@ -62,7 +62,7 @@ const ManufacturerTable = ({ manufacturers }) => {
                   {operation.name}
                 </td>
                 <td className="px-4 py-2 border border-gray-300">
-                  {operation.cost? `₹${operation.cost}` : `Discuss later`}
+                  {operation.cost? `₹${operation.cost}` : `₹${Math.floor(Math.random() * (30000 - 10000 + 1) + 10000)}`}
                 </td>
               </tr>
             ))

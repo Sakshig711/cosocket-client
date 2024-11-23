@@ -9,8 +9,15 @@ import { FaHouseUser } from "react-icons/fa";
 import VariantCard from "../components/VariantCard";
 import { useGetVariantsMutation } from "../store/slices/gptApiSlice";
 import Loader from "../components/Loader";
-import SubmitBtn from "../components/SubmitBtn";
-import { BarLoader, ScaleLoader } from "react-spinners";
+import { BarLoader } from "react-spinners";
+import bg1 from "../assets/var1.webp";
+import bg2 from "../assets/var2.webp";
+import bg3 from "../assets/var3.webp";
+import bg4 from "../assets/var4.webp";
+
+const oddImages = [bg1, bg3];
+const evenImages = [bg2, bg4];
+let oddIndex = 0, evenIndex = 0;
 
 const Product = () => {
   const [specs, setSpecs] = useState("");
@@ -18,6 +25,8 @@ const Product = () => {
   const [getVariants, { isLoading }] = useGetVariantsMutation();
   const [product, setProduct] = useState(null);
   const [variants, setVariants] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedVariant, setSelectedVariant] = useState(null);
   const { product: productSlug } = useParams();
 
   const fetchProducts = async () => {
@@ -41,15 +50,25 @@ const Product = () => {
     }
   };
 
+  const handleViewDetails = (variant) => {
+    setSelectedVariant(variant);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedVariant(null);
+  };
+
   useEffect(() => {
-    fetchProducts(); // Fetch product when productSlug changes
+    fetchProducts();
   }, [productSlug]);
 
   useEffect(() => {
     if (product) {
-      fetchVariants(); // Fetch variants when the product has been fetched and set
+      fetchVariants();
     }
-  }, [product]); // Trigger fetching variants whenever the product changes
+  }, [product]);
 
   return (
     <Layout>
@@ -62,7 +81,7 @@ const Product = () => {
               <h1 className="text-2xl font-bold text-black mb-10">
                 {product.name}
               </h1>
-              <div className="w-full ">
+              <div className="w-full">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -102,21 +121,28 @@ const Product = () => {
                   <IoMdRefreshCircle className="text-lg" />
                 </button>
               </div>
-
+              <Link to={`/operations/${product.slug}`} className="w-full">
+                <Button className="w-full flex justify-start gap-2 items-center">
+                  <div>
+                    <IoMdBusiness className="" />
+                  </div>
+                  <div> Prepare process sheet & make in india </div>
+                </Button>
+              </Link>
               <div className="flex gap-4 justify-between items-center flex-wrap mt-4 w-full">
-                <Link to={`/operations/${product.slug}`} className="w-full flex-grow flex-shrink basis-[80px]">
-                  <Button className="w-full flex justify-start items-center">
-                    <IoMdBusiness className="inline me-2.5" /> Customization{" "}
-                  </Button>
-                </Link>
-
-                <Link to={`/sourcing/${product.name}`} className="w-full flex-grow flex-shrink basis-[80px]">
+                <Link
+                  to={`/sourcing/${product.name}`}
+                  className="w-full flex-grow flex-shrink basis-[80px]"
+                >
                   <Button className="w-full flex justify-start items-center">
                     <FaHouseUser className="inline me-2.5" /> Sourcing
                   </Button>
                 </Link>
 
-                <Link to={`/inspection/${product.name}`} className="w-full flex-grow flex-shrink basis-[80px]">
+                <Link
+                  to={`/inspection/${product.name}`}
+                  className="w-full flex-grow flex-shrink basis-[80px]"
+                >
                   <Button className="w-full flex justify-start items-center">
                     <LuInspect className="inline me-2.5" /> Inspection
                   </Button>
@@ -127,7 +153,6 @@ const Product = () => {
 
           <div className="md:w-[60%] w-full mx-auto">
             <h1 className="text-2xl font-bold text-black mb-10">Variants</h1>
-            {/* Loader */}
             {isLoading ? (
               <div className="w-full h-full flex justify-start items-start mb-8">
                 <BarLoader color="#1F2937" speedMultiplier={2} />
@@ -135,11 +160,88 @@ const Product = () => {
             ) : (
               <div className="grid xl:grid-cols-2 gap-8">
                 {variants &&
-                  variants.map((variant, index) => (
-                    <VariantCard key={index} variant={variant} />
-                  ))}
+                  variants.map((variant, index) => {
+                    let image;
+                    if (index === 0 || index % 2 !== 0) {
+                      image = oddImages[oddIndex];
+                      oddIndex = (oddIndex + 1) % oddImages.length;
+                    } else {
+                      image = evenImages[evenIndex];
+                      evenIndex = (evenIndex + 1) % evenImages.length;
+                    }
+                    return (
+                      <VariantCard
+                        key={index}
+                        variant={variant}
+                        onViewDetails={handleViewDetails}
+                        image={image}
+                      />
+                    );
+                  })}
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Modal Implementation */}
+      {showModal && selectedVariant && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-y-auto">
+          <div className="bg-white p-6 rounded shadow-md w-full max-w-3xl mx-4 sm:mx-auto overflow-hidden">
+            {/* Modal Header */}
+            <h2 className="text-lg sm:text-xl font-bold mb-4 text-center">
+              {selectedVariant.name}
+            </h2>
+
+            {/* Scrollable Content */}
+            <div className="max-h-[75vh] overflow-y-auto">
+              <table className="w-full text-left mb-6 border border-gray-200 text-sm sm:text-base">
+                <tbody>
+                  {Object.entries(selectedVariant).map(([key, value]) => (
+                    <tr key={key}>
+                      <th className="border px-4 py-2 font-semibold text-gray-700 break-words sm:whitespace-nowrap">
+                        {key}
+                      </th>
+                      <td className="border px-4 py-2 text-gray-600 break-words">
+                        {value}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex w-full flex-col gap-4 mt-6">
+              <div className="flex w-full items-center flex-col sm:flex-row gap-4">
+              <Link to={`/operations/${selectedVariant?.name}`} className="flex-grow w-full basis-[60%]">
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded flex items-center justify-center">
+                  <IoMdBusiness className="mr-2" />
+                  Prepare process sheet & make in India
+                </Button>
+              </Link>
+                <Link to={`/sourcing/${selectedVariant?.name}`} className="flex-grow w-full basis-[25%]">
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded flex items-center justify-center">
+                    <FaHouseUser className="mr-2" />
+                    Sourcing
+                  </Button>
+                </Link>
+                <Link to={`/inspection/${selectedVariant?.name}`} className="flex-grow w-full basis-[25%]">
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded flex items-center justify-center">
+                    <LuInspect className="mr-2" />
+                    Inspection
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="mt-4 bg-red-500 hover:bg-red-600 font-bold text-white py-1.5 px-4 rounded w-full"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}

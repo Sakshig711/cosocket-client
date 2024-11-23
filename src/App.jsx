@@ -11,6 +11,7 @@ import Details from "./containers/Details";
 import Sourcing from "./containers/Sourcing";
 import HowItWorks from "./containers/HowItWorks";
 import ManufacturerPage from "./containers/ManufacturerPage";
+import VariantDetails from "./containers/VariantDetails";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/manufacturer/:id" element={<Details />} />
         <Route path="/demo" element={<HowItWorks />} />
         <Route path="/top-manufacturers" element={<ManufacturerPage />} />
+        <Route path="/variants/:variant" element={<VariantDetails />} />
       </Routes>
     </Router>
   );

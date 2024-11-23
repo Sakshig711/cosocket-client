@@ -1,37 +1,34 @@
 import React from "react";
-import Button from "./Button";
-import { Link } from "react-router-dom";
 
-const VariantCard = ({ variant, className }) => {
+
+const VariantCard = ({ key, variant, onViewDetails, image }) => {
   return (
-    <div
-      className = {`rounded-sm overflow-hidden bg-white ${className} shadow-custom`}
-    >
-      {/* Title */}
-      <div className="w-full h-full px-6 flex flex-col justify-between py-4">
-        <p className="text-gray-600 mt-2 flex-1">
-          {Object.entries(variant).map(([key, value], idx) => (
-            <div
-              key={idx}
-              className="flex justify-between items-center gap-4 mt-1"
-            >
-              <div className="capitalize text-black font-semibold">{key}</div>
-              <div className="italic">
-                {Array.isArray(value)
-                  ? value.slice(0, 2).map((element, index) => (
-                      <span key={index}>
-                        {element}
-                        {index !== value.slice(0, 2).length - 1 && ", "}
-                      </span>
-                    ))
-                  : value.slice(0, 22)}
-              </div>
-            </div>
-          ))}
+    <div className="border shadow-lg rounded-lg overflow-hidden bg-white transition-transform transform hover:scale-105">
+      {/* Variant Image */}
+      <div className="w-full h-40 bg-gray-200 flex items-center justify-center">
+        <img
+          src={variant.image || image}
+          alt={variant.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Variant Details */}
+      <div className="p-4">
+        <h3 className="text-lg font-semibold text-gray-800 mb-2">
+          {variant.name}
+        </h3>
+        <p className="text-sm text-gray-600 line-clamp-2">
+          {variant.description || "No description available."}
         </p>
-        <Link to={`/operations/${variant.name}`}>
-          <Button className="w-full mt-4 !hover:bg-gray-800 !bg-gray-700">Customization</Button>
-        </Link>
+
+        {/* View Details Button */}
+        <button
+          onClick={() => onViewDetails(variant)}
+          className="mt-4 w-full bg-gray-700 hover:bg-gray-800 text-white font-medium py-1.5 px-4 rounded"
+        >
+          View Details
+        </button>
       </div>
     </div>
   );

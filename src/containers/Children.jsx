@@ -127,9 +127,8 @@ const Children = () => {
                         key={index}
                         imgUrl={element.image}
                         name={element.name}
-                        price={element.price}
-                        materials={element.materials}
                         slug={element.slug}
+                        description={element.description}
                       />
                     ))}
                 </div>
