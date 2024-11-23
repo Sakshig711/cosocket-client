@@ -39,8 +39,15 @@ export const gptApiSlice = apiSlice.injectEndpoints({
                 method: "GET",
                 credentials: "include"
             })
+        }),
+        getIcon: builder.mutation({
+            query: (variant) => ({
+                url: `${GPT_URL}/variants/${variant}`,
+                method: "GET",
+                credentials: "include"
+            })
         })
     })
 });
 
-export const { useGetInspectionStepsMutation, useGetVariantsMutation, useGetOperationsMutation, useGetManufacturersMutation, useGetSourcingMutation } = gptApiSlice;
+export const { useGetInspectionStepsMutation, useGetVariantsMutation, useGetOperationsMutation, useGetManufacturersMutation, useGetSourcingMutation, useGetIconMutation } = gptApiSlice;
