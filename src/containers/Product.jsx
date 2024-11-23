@@ -187,7 +187,7 @@ const Product = () => {
 
       {/* Modal Implementation */}
       {showModal && selectedVariant && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 overflow-y-auto scrollbar-hide">
   <div className="bg-white mt-20 sm:mt-0 p-6 rounded-lg shadow-xl w-full max-w-4xl mx-4 sm:mx-auto overflow-hidden relative transition-transform transform scale-95 hover:scale-100">
     {/* Close Button */}
     <button
@@ -222,7 +222,7 @@ const Product = () => {
     </p>
 
     {/* Display Information Creatively */}
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-h-[65vh] overflow-y-auto">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-h-[65vh] overflow-y-auto scrollbar-hide">
       {Object.entries(selectedVariant).map(([key, value], index) => (
         <div
           key={index}
