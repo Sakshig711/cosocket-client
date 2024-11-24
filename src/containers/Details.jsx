@@ -37,13 +37,13 @@ const Details = () => {
       {!manufacturer ? (
         <Loader />
       ) : (
-        <div className="md:p-10 p-5 flex flex-wrap gap-0 justify-center items-stretch my-5 bg-white">
+        <div className="md:p-10 p-5 flex flex-wrap gap-0 justify-center items-stretch my-5 ">
           <div className="image-gallery bg-gray-800 md:scale-105 scale-1 w-full md:basis-[40%] flex justify-end items-center rounded-sm">
             <div className="image md:w-full w-[90%]">
               <img src={detailsImage} className="w-full cover" alt="" />
             </div>
           </div>
-          <div className="container md:basis-[53%] md:p-8 p-4 md:ps-10 bg-gray-100 shadow-custom rounded-sm">
+          <div className="container md:basis-[53%] md:p-8 p-4 md:ps-10 bg-white shadow-custom rounded-sm">
             <h1 className="md:text-3xl text-2xl font-bold w-fit mb-4 pb-2 border-black border-b-2">
               {manufacturer.name}
             </h1>
