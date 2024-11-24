@@ -122,41 +122,32 @@ const Product = () => {
                   <IoMdRefreshCircle className="text-lg" />
                 </button>
               </div>
-              <a
-                href={`/operations/${product.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full"
-              >
+              <Link to={`/operations/${product.slug}`} className="w-full">
                 <Button className="w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-700 text-white flex justify-start gap-2 items-center">
                   <div>
                     <IoMdBusiness className="" />
                   </div>
                   <div> Prepare process sheet & make in india </div>
                 </Button>
-              </a>
+              </Link>
               <div className="flex gap-4 justify-between items-center flex-wrap mt-4 w-full">
-                <a
-                  href={`/sourcing/${product.name}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/sourcing/${product.name}`}
                   className="w-full flex-grow flex-shrink basis-[80px]"
                 >
                   <Button className="w-full bg-gradient-to-r from-green-400 to-green-600 text-white flex justify-start items-center">
                     <FaHouseUser className="inline me-2.5" /> Sourcing
                   </Button>
-                </a>
+                </Link>
 
-                <a
-                  href={`/inspection/${product.name}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/inspection/${product.name}`}
                   className="w-full flex-grow flex-shrink basis-[80px]"
                 >
                   <Button className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white flex justify-start items-center">
                     <LuInspect className="inline me-2.5" /> Inspection
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           )}
@@ -197,114 +188,107 @@ const Product = () => {
       {/* Modal Implementation */}
       {showModal && selectedVariant && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 overflow-y-auto scrollbar-hide">
-          <div className="bg-white mt-20 sm:mt-0 p-6 rounded-lg shadow-xl w-full max-w-4xl mx-4 sm:mx-auto overflow-hidden relative transition-transform transform scale-95 hover:scale-100">
-            {/* Close Button */}
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label="Close Modal"
+  <div className="bg-white mt-20 sm:mt-0 p-6 rounded-lg shadow-xl w-full max-w-4xl mx-4 sm:mx-auto overflow-hidden relative transition-transform transform scale-95 hover:scale-100">
+    {/* Close Button */}
+    <button
+      onClick={closeModal}
+      className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+      aria-label="Close Modal"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+
+    {/* Modal Header */}
+    <h2 className="text-3xl font-bold text-center mb-2 text-gray-800">
+      <span className="inline-block text-black">
+        {selectedVariant.name}
+      </span>
+    </h2>
+    <p className="text-center text-sm text-gray-500 italic mb-6">
+      Detailed specifications for the selected variant.
+    </p>
+
+    {/* Display Information Creatively */}
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-h-[65vh] overflow-y-auto scrollbar-hide">
+      {Object.entries(selectedVariant).map(([key, value], index) => (
+        <div
+          key={index}
+          className="flex flex-col items-center bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
+        >
+          {/* Attribute Icon */}
+          <div className="flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-full mb-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-
-            {/* Modal Header */}
-            <h2 className="text-3xl font-bold text-center mb-2 text-gray-800">
-              <span className="inline-block text-black">
-                {selectedVariant.name}
-              </span>
-            </h2>
-            <p className="text-center text-sm text-gray-500 italic mb-6">
-              Detailed specifications for the selected variant.
-            </p>
-
-            {/* Display Information Creatively */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-h-[65vh] overflow-y-auto scrollbar-hide">
-              {Object.entries(selectedVariant).map(([key, value], index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
-                >
-                  {/* Attribute Icon */}
-                  <div className="flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-full mb-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 8v4m0 4h.01m6.938-4h-4m-4 0H5.062m6.938 4v4m0-4H5.062m6.938-4H5.062M21 12h-4"
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Attribute Name and Value */}
-                  <h3 className="text-lg font-semibold text-gray-800 capitalize">
-                    {key}
-                  </h3>
-                  <p className="text-gray-600 text-sm text-center">
-                    {value || "N/A"}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Footer Buttons */}
-            <div className="mt-6">
-              <a
-                href={`/operations/${selectedVariant?.name}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <Button className="w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-700 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
-                  <IoMdBusiness className="mr-2" />
-                  Prepare Process Sheet & Make in India
-                </Button>
-              </a>
-              <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                <a
-                  href={`/sourcing/${selectedVariant?.name}`}
-                  className="flex-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="w-full bg-gradient-to-r from-green-400 to-green-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
-                    <FaHouseUser className="mr-2" />
-                    Sourcing
-                  </Button>
-                </a>
-                <a
-                  href={`/inspection/${selectedVariant?.name}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1"
-                >
-                  <Button className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
-                    <LuInspect className="mr-2" />
-                    Inspection
-                  </Button>
-                </a>
-              </div>
-            </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 8v4m0 4h.01m6.938-4h-4m-4 0H5.062m6.938 4v4m0-4H5.062m6.938-4H5.062M21 12h-4"
+              />
+            </svg>
           </div>
+
+          {/* Attribute Name and Value */}
+          <h3 className="text-lg font-semibold text-gray-800 capitalize">
+            {key}
+          </h3>
+          <p className="text-gray-600 text-sm text-center">{value || "N/A"}</p>
         </div>
+      ))}
+    </div>
+
+    {/* Footer Buttons */}
+    <div className="mt-6">
+      <Link
+        to={`/operations/${selectedVariant?.name}`}
+        className="block"
+      >
+        <Button className="w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-700 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
+          <IoMdBusiness className="mr-2" />
+          Prepare Process Sheet & Make in India
+        </Button>
+      </Link>
+      <div className="flex flex-col sm:flex-row gap-4 mt-4">
+        <Link
+          to={`/sourcing/${selectedVariant?.name}`}
+          className="flex-1"
+        >
+          <Button className="w-full bg-gradient-to-r from-green-400 to-green-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
+            <FaHouseUser className="mr-2" />
+            Sourcing
+          </Button>
+        </Link>
+        <Link
+          herf={`/inspection/${selectedVariant?.name}`}
+          className="flex-1"
+        >
+          <Button className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
+            <LuInspect className="mr-2" />
+            Inspection
+          </Button>
+        </Link>
+      </div>
+    </div>
+  </div>
+</div>
+
       )}
     </Layout>
   );

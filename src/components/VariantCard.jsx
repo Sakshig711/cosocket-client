@@ -25,28 +25,12 @@ const VariantCard = ({ variant, onViewDetails }) => {
   const attributes = Object.entries(variant);
   const firstHalf = attributes.slice(0, Math.ceil(attributes.length / 2));
 
-  // Dynamic color coding based on category or size
-  const getCardColor = (size) => {
-    switch (size?.toLowerCase()) {
-      case "small":
-        return "bg-green-100 border-green-500";
-      case "medium":
-        return "bg-blue-100 border-blue-500";
-      case "large":
-        return "bg-yellow-100 border-yellow-500";
-      default:
-        return "bg-gray-100 border-gray-300";
-    }
-  };
-
   // Dynamically render the icon component
   const IconComponent = iconName && Icons[iconName] ? Icons[iconName] : Icons.FaClipboardList;
 
   return (
     <div
-      className={`border shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col ${getCardColor(
-        variant.size
-      )}`}
+      className={`border shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105`}
     >
       {/* Iconography Header */}
       <div className="w-full h-24 flex items-center justify-center bg-gradient-to-r from-gray-200 to-gray-100">
@@ -55,29 +39,25 @@ const VariantCard = ({ variant, onViewDetails }) => {
       </div>
 
       {/* Variant Details */}
-      <div className="p-4 flex-grow">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+      <div className="p-4">
+        <h3 className="text-lg font-semibold text-gray-800 mb-2">
           {variant.name || "Unnamed Variant"}
         </h3>
 
-        {/* Display Attributes Creatively */}
-        <ul className="grid grid-cols-2 gap-4 text-sm text-gray-600">
+        {/* Display Half of the Attributes */}
+        <ul className="text-sm text-gray-600 space-y-1">
           {firstHalf.map(([key, value], index) => (
-            <li key={index} className="flex items-center gap-2">
-              <span className="font-medium capitalize text-gray-700 bg-gray-200 rounded-full px-2 py-1">
-                {key}
-              </span>
-              <span className="text-gray-600 truncate">{value || "N/A"}</span>
+            <li key={index}>
+              <span className="font-medium capitalize">{key}: </span>
+              {value || "N/A"}
             </li>
           ))}
         </ul>
-      </div>
 
-      {/* View Details Button */}
-      <div className="p-4">
+        {/* View Details Button */}
         <button
           onClick={() => onViewDetails(variant)}
-          className="w-full bg-gray-700 hover:bg-gray-800 text-white font-medium py-1.5 px-4 rounded"
+          className="mt-4 w-full bg-gray-700 hover:bg-gray-800 text-white font-medium py-1.5 px-4 rounded"
         >
           View Details
         </button>
