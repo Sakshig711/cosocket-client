@@ -43,7 +43,7 @@ const Details = () => {
               <img src={detailsImage} className="w-full cover" alt="" />
             </div>
           </div>
-          <div className="container md:basis-[53%] md:p-8 p-4 md:ps-10 bg-white shadow-custom rounded-sm">
+          <div className="container md:basis-[53%] md:p-8 p-4 md:ps-10 bg-white border shadow-custom rounded-sm">
             <h1 className="md:text-3xl text-2xl font-bold w-fit mb-4 pb-2 border-black border-b-2">
               {manufacturer.name}
             </h1>
@@ -79,7 +79,7 @@ const Details = () => {
               {manufacturer.operations.map((operation) => (
                 <div
                   key={operation._id}
-                  className="mb-5 p-4 border rounded shadow-custom-sm bg-gray-200"
+                  className="mb-5 p-4 border rounded shadow-custom-sm bg-gray-100"
                 >
                   <div className="flex justify-between items-center">
                   <h3 className="text-[0.9rem] text-gray-400 mb-3 tracking-wide uppercase font-[900]">
