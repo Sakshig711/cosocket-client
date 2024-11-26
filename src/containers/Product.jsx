@@ -276,7 +276,7 @@ const Product = () => {
           </Button>
         </Link>
         <Link
-          herf={`/inspection/${selectedVariant?.name}`}
+          to={`/inspection/${selectedVariant?.name}`}
           className="flex-1"
         >
           <Button className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">

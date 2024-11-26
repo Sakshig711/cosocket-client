@@ -32,7 +32,7 @@ const VariantCard = ({ variant, onViewDetails }) => {
       {/* Header Section */}
       <div className="flex w-full items-center gap-4 p-4 bg-gradient-to-r from-gray-300 to-gray-200">
         <div className="p-3 bg-white rounded-full text-gray-700 shadow-md">
-          <IconComponent className="text-4xl" />
+          <IconComponent className="text-xl" />
         </div>
         <h3 className="text-lg font-semibold text-gray-800 truncate">{variant.name || "Unnamed Variant"}</h3>
       </div>
