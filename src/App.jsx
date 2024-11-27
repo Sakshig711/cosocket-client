@@ -12,6 +12,7 @@ import Sourcing from "./containers/Sourcing";
 import HowItWorks from "./containers/HowItWorks";
 import ManufacturerPage from "./containers/ManufacturerPage";
 import VariantDetails from "./containers/VariantDetails";
+import SearchedProducts from "./containers/SearchedProducts";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/demo" element={<HowItWorks />} />
         <Route path="/top-manufacturers" element={<ManufacturerPage />} />
         <Route path="/variants/:variant" element={<VariantDetails />} />
+        <Route path="/search" element={<SearchedProducts />} />
       </Routes>
     </Router>
   );

@@ -11,9 +11,10 @@ import logoutImage from "../assets/log-out.png";
 import { logout } from "../store/slices/authSlice";
 import { useLogoutMutation } from "../store/slices/usersApiSlice";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetCategoriesMutation } from "../store/slices/childrenApiSlice";
 import Loader from "./Loader";
+import { useSearchProductMutation } from "../store/slices/productApiSlice";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
@@ -21,10 +22,13 @@ const Navbar = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [product, setProduct] = useState("");
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [logoutUser, { isLoading }] = useLogoutMutation();
   const [getCategories, { isLoading: isLoading2 }] = useGetCategoriesMutation();
+  const [searchProduct, { isLoading: isLoading3 }] = useSearchProductMutation();
+  const navigate = useNavigate();
 
   // Menu Items with corresponding URLs
   const menuItems = [
@@ -111,6 +115,24 @@ const Navbar = () => {
       console.log(error);
     }
   };
+  
+  // Function to search product
+  const fetchProduct = async (e) => {
+    setProduct(e.target.value);
+    
+    if (!product || product.trim() === "") {
+      console.log("Invalid search query");
+      return;
+  }
+    
+    try {
+      console.log(product);
+      const { data } = await searchProduct(product).unwrap();
+      navigate("/search", { state: data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     fetchCategories();
@@ -157,6 +179,8 @@ const Navbar = () => {
                   name="product"
                   id="search"
                   placeholder="Enter your product here..."
+                  value={product}
+                  onChange={fetchProduct}
                 />
                 <div className="bg-gray-800 cursor-pointer shadow flex justify-center items-center p-2 rounded-full">
                   <FaSearch className="text-lg text-white" />

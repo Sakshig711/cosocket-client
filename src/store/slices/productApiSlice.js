@@ -14,8 +14,14 @@ export const productApiSlice = apiSlice.injectEndpoints({
                 url: `${URL}/random/${qty}`,
                 method: "GET"
             })
+        }),
+        searchProduct: builder.mutation({
+            query: (product) => ({
+                url: `${URL}/search?q=${product}`,
+                method: "GET"
+            })
         })
     })
 });
 
-export const { useGetProductMutation, useGetRandomProductsMutation } = productApiSlice;
+export const { useGetProductMutation, useGetRandomProductsMutation, useSearchProductMutation } = productApiSlice;
