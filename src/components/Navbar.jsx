@@ -115,24 +115,23 @@ const Navbar = () => {
       console.log(error);
     }
   };
-  
+
   // Function to search product
-  const fetchProduct = async (e) => {
-    setProduct(e.target.value);
-    
+  const fetchProduct = async () => {
     if (!product || product.trim() === "") {
       console.log("Invalid search query");
       return;
-  }
-    
+    }
+
     try {
       console.log(product);
       const { data } = await searchProduct(product).unwrap();
       navigate("/search", { state: data });
     } catch (error) {
       console.log(error);
+      toast.error(error?.data?.message);
     }
-  }
+  };
 
   useEffect(() => {
     fetchCategories();
@@ -180,9 +179,12 @@ const Navbar = () => {
                   id="search"
                   placeholder="Enter your product here..."
                   value={product}
-                  onChange={fetchProduct}
+                  onChange={(e) => setProduct(e.target.value)}
                 />
-                <div className="bg-gray-800 cursor-pointer shadow flex justify-center items-center p-2 rounded-full">
+                <div
+                  onClick={fetchProduct}
+                  className="bg-gray-800 cursor-pointer shadow flex justify-center items-center p-2 rounded-full"
+                >
                   <FaSearch className="text-lg text-white" />
                 </div>
               </div>
@@ -267,9 +269,10 @@ const Navbar = () => {
                 name="product"
                 id="search"
                 placeholder="Enter your product here..."
+                onChange={(e) => setProduct(e.target.value)}
               />
               <div className="cursor-pointer flex justify-center items-center p-2">
-                <FaSearch className=" text-lg text-orange-500" />
+                <FaSearch onClick={fetchProduct} className=" text-lg text-orange-500" />
               </div>
             </div>
             {userInfo ? (
