@@ -31,7 +31,7 @@ function App() {
         <Route path="/demo" element={<HowItWorks />} />
         <Route path="/top-manufacturers" element={<ManufacturerPage />} />
         <Route path="/variants/:variant" element={<VariantDetails />} />
-        <Route path="/search?q" element={<SearchedProducts />} />
+        <Route path="/search" element={<SearchedProducts />} />
       </Routes>
     </Router>
   );
