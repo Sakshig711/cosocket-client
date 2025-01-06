@@ -28,7 +28,7 @@ const VariantCard = ({ variant, onViewDetails }) => {
   const attributes = Object.entries(variant);
 
   return (
-    <div className="border w-full shadow-lg rounded-lg overflow-hidden bg-white transition-transform transform hover:scale-105 max-w-sm mx-auto">
+    <div className="border w-full shadow-lg rounded-lg overflow-hidden bg-white transition-transform transform  max-w-sm mx-auto">
       {/* Header Section */}
       <div className="flex w-full items-center gap-4 p-4 bg-gradient-to-r from-gray-300 to-gray-200">
         <div className="p-3 bg-white rounded-full text-gray-700 shadow-md">
@@ -57,7 +57,7 @@ const VariantCard = ({ variant, onViewDetails }) => {
       <div className="p-4 border-t">
         <button
           onClick={() => onViewDetails(variant)}
-          className="w-full bg-gray-800 text-white font-medium py-1.5 px-4 rounded-lg shadow-md hover:bg-black transition-transform transform hover:scale-105"
+          className="w-full bg-gray-800 text-white font-medium py-1.5 px-4 rounded-lg shadow-md hover:bg-black transition-transform transform"
         >
           View Details
         </button>

@@ -188,7 +188,7 @@ const Product = () => {
       {/* Modal Implementation */}
       {showModal && selectedVariant && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 overflow-y-auto scrollbar-hide">
-  <div className="bg-white mt-20 sm:mt-0 p-6 rounded-lg shadow-xl w-full max-w-4xl mx-4 sm:mx-auto overflow-hidden relative transition-transform transform scale-95 hover:scale-100">
+  <div className="bg-white mt-20 sm:mt-0 p-6 rounded-lg shadow-xl w-full max-w-4xl mx-4 sm:mx-auto overflow-hidden relative">
     {/* Close Button */}
     <button
       onClick={closeModal}
@@ -222,11 +222,11 @@ const Product = () => {
     </p>
 
     {/* Display Information Creatively */}
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-h-[65vh] overflow-y-auto scrollbar-hide">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-7 max-h-[75vh] overflow-y-auto scrollbar-hide">
       {Object.entries(selectedVariant).map(([key, value], index) => (
         <div
           key={index}
-          className="flex flex-col items-center bg-gray-50 p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
+          className="flex flex-col items-center bg-gray-50 p-4 rounded-lg"
         >
           {/* Attribute Icon */}
           <div className="flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-full mb-3">
@@ -260,7 +260,7 @@ const Product = () => {
         to={`/operations/${selectedVariant?.name}`}
         className="block"
       >
-        <Button className="w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-700 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
+        <Button className="w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-700 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center">
           <IoMdBusiness className="mr-2" />
           Prepare Process Sheet & Make in India
         </Button>
@@ -270,7 +270,7 @@ const Product = () => {
           to={`/sourcing/${selectedVariant?.name}`}
           className="flex-1"
         >
-          <Button className="w-full bg-gradient-to-r from-green-400 to-green-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
+          <Button className="w-full bg-gradient-to-r from-green-400 to-green-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center">
             <FaHouseUser className="mr-2" />
             Sourcing
           </Button>
@@ -279,7 +279,7 @@ const Product = () => {
           to={`/inspection/${selectedVariant?.name}`}
           className="flex-1"
         >
-          <Button className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center transition-transform transform hover:scale-105">
+          <Button className="w-full bg-gradient-to-r from-orange-400 to-orange-600 text-white py-1.5 px-4 rounded-lg shadow-md flex items-center justify-center">
             <LuInspect className="mr-2" />
             Inspection
           </Button>
